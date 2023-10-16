@@ -8,11 +8,52 @@
 </head>
 
 <body>
-
-
-    <h1>We moved to feature-1 branch</h1>
+    <h1 onclick="handleH1Click()">We moved to feature-1 branch</h1>
     <p>secondary text</p>
 
+    <button onclick="handleButtonClick()">start interval</button>
+
+    <script>
+        // timeout - fare una cosa dopo ALMENO n millisecondi
+        setTimeout(() => {
+
+            console.log("TIMEOUT DOPO 2s")
+        }, 2000)
+
+        setTimeout(() => {
+
+            console.log("TIMEOUT DOPO 1s")
+        }, 1000)
+
+
+        // interval - fera una cosa ogni n millisecondi
+        // setInterval(() => { console.log("interval") }, 1000)
+
+
+
+
+        const handleH1Click = () => {
+            const p = document.querySelector("p")
+            p.style.color = "red"
+
+            setTimeout(() => {
+                p.style.color = "black"
+                p.innerText = "changed back to black"
+            }, 1800)
+        }
+
+        const handleButtonClick = () => {
+            let counter = 0
+            let myInterval = setInterval(() => {
+                counter++
+                console.log("sono passati " + counter + "s")
+                if (counter === 10) {
+                    clearInterval(myInterval)
+                    console.log("intervallo interrotto")
+                }
+            }, 1000)
+        }
+    </script>
 </body>
 
 </html>
